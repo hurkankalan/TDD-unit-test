@@ -1,7 +1,7 @@
 /*
 **TYPES**
 Pour installer les types Typescript de Jest dans nos projets :
---> npm i  @types/jest
+--> npm i @types/jest
 VS Code va ainsi pouvoir automatiquement récupérer les types et les arguments des méthodes et fonctions et utiliser l’autocomplétion !
 Pour ouvrir les tests en mode watch, dans le package.json, changer "test": "jest" par "test": "jest --watch"
 On pourrait mettre d'autres options comme un pattern, ou l'execution d'un fichier en particulier etc, je vous laisse regarder dans la doc.
@@ -113,6 +113,9 @@ describe("Les matchers pour les strings", () => {
 pour cette propriété. On peut vérifier la présence de propriétés imbriquées avec .toHaveProperty("prop1.propImbriquee").
 
 - Le matcher toMatchObject() est plus avancé : il permet de vérifier qu’un objet possède les propriétés et les valeurs d’un autre objet.
+vérifie que l'objet cible a toutes les propriétés de l'objet fourni avec les mêmes valeurs.
+Cela signifie que l'objet cible peut avoir d'autres propriétés que celles fournies dans l'objet de comparaison.
+-> C'est la différence entre toEqual() et toMatchObject()
 Il est également utilisable avec des tableaux d’objets pour vérifier que les objets correspondent et qu’il y a exactement le même
 nombre d’éléments.
 
@@ -200,9 +203,10 @@ describe("Les matchers pour les nombres", () => {
 
 /*
 **Les matchers pour les tableaux**
-- toEqual() : pour comparer l'egalité entre deux objects (voir en haut la leçon sur l'égalité)
-- toContain() : permet de vérifier la présence d’un élément dans un tableau
+- toEqual() : pour comparer l'egalité entre deux elements (voir en haut la leçon sur l'égalité)
+- toContain() : permet de vérifier la présence d’un élément dans un tableau sans tenir compte de l'ordre de celui-ci.
 - toContainEqual() : permet de vérifier la présence d’un objet avec les propriétés passés dans un tableau.
+Si on verifie la présence d'un objet, ou d'un tableau dans un objet ou tableau, contain ne fonctionne pas.
 - toHaveLength() permet de vérifier qu’une string ou un tableau a la length spécifiée.
 */
 describe("Les matchers pour les tableaux", () => {
@@ -239,7 +243,7 @@ describe("Les matchers pour les tableaux", () => {
 - toBeTruthy() : vérifie que la valeur est truthy (true)
 - toBeFalsy() : vérifie que la valeur est falsy (false)
 */
-test.only("La valeur null", () => {
+test("La valeur null", () => {
   const n = null;
   expect(n).toBeNull();
   expect(n).toBeDefined();

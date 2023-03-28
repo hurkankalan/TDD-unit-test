@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./course2/matchers.spec.js"
+    "test": "jest ./course2/exercices-matchers.spec.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
+    "@types/jest": "^29.5.0",
     "jest": "^29.5.0"
   }
 }
