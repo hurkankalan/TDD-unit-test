@@ -184,7 +184,7 @@ Il existe des matchers pour vérifier que le nombre reçu est :
 (précision de 2 chiffres après la virgule par défaut). Il prend optionnellement un deuxième argument permettant de passer la précision
 de la comparaison (donc préciser le nombre de chiffres à vérifier après la virgule).
 */
-describe.only("Les matchers pour les nombres", () => {
+describe("Les matchers pour les nombres", () => {
   const num1 = 0.1;
   const num2 = 0.2;
   const num3 = 10;
@@ -197,3 +197,36 @@ describe.only("Les matchers pour les nombres", () => {
     expect(num4).toBeGreaterThanOrEqual(num3);
   });
 });
+
+/*
+**Les matchers pour les tableaux**
+- toEqual() : pour comparer l'egalité entre deux objects (voir en haut la leçon sur l'égalité)
+- toContain() : permet de vérifier la présence d’un élément dans un tableau
+- toContainEqual() : permet de vérifier la présence d’un objet avec les propriétés passés dans un tableau.
+- toHaveLength() permet de vérifier qu’une string ou un tableau a la length spécifiée.
+*/
+describe.only("Les matchers pour les tableaux", () => {
+  const animals = [
+    "Wolf",
+    "Tiger",
+    {
+      dog: "pet",
+      cat: "pet",
+    },
+  ];
+
+  test("La variable animals contient la string Wolf", () => {
+    expect(animals).toContain("Wolf");
+  });
+  test("La variable animals contient l'objet passé en paramètre", () => {
+    expect(animals).toContainEqual({
+      dog: "pet",
+      cat: "pet",
+    }); // success
+  });
+});
+
+/*
+**Les matchers de valeur stricte**
+
+ */
