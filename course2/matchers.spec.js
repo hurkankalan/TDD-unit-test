@@ -205,7 +205,7 @@ describe("Les matchers pour les nombres", () => {
 - toContainEqual() : permet de vérifier la présence d’un objet avec les propriétés passés dans un tableau.
 - toHaveLength() permet de vérifier qu’une string ou un tableau a la length spécifiée.
 */
-describe.only("Les matchers pour les tableaux", () => {
+describe("Les matchers pour les tableaux", () => {
   const animals = [
     "Wolf",
     "Tiger",
@@ -228,5 +228,31 @@ describe.only("Les matchers pour les tableaux", () => {
 
 /*
 **Les matchers de valeur stricte**
+- toBeUndefined() : vérifie que la valeur est undefined.
+- toBeDefined() : vérifie qu’une valeur ne vaut pas undefined.
+- toBeNaN() vérifie que la valeur est NaN
+- toBeNull() vérifie que la valeur est null.
+*/
 
- */
+/*
+**Les matchers utilisant des instructions conditionnelles**
+- toBeTruthy() : vérifie que la valeur est truthy (true)
+- toBeFalsy() : vérifie que la valeur est falsy (false)
+*/
+test.only("La valeur null", () => {
+  const n = null;
+  expect(n).toBeNull();
+  expect(n).toBeDefined();
+  expect(n).not.toBeUndefined();
+  expect(n).not.toBeTruthy();
+  expect(n).toBeFalsy();
+});
+
+test("Zéro", () => {
+  const z = 0;
+  expect(z).not.toBeNull();
+  expect(z).toBeDefined();
+  expect(z).not.toBeUndefined();
+  expect(z).not.toBeTruthy();
+  expect(z).toBeFalsy();
+});
