@@ -172,3 +172,28 @@ describe("Les matchers pour les objets", () => {
     expect([{ a: 1 }, { b: 2, c: 3 }]).toMatchObject([{ a: 1 }, { b: 2 }]);
   });
 });
+
+/*
+**Les matchers pour les nombres**
+Il existe des matchers pour vérifier que le nombre reçu est :
+- plus grand que celui attendu (toBeGreaterThan()).
+- plus grand ou égal à celui attendu (toBeGreaterThanOrEqual()).
+- plus petit que celui attendu (toBeLessThan()).
+- plus petit ou égal à celui attendu (toBeLessThanOrEqual()).
+- toBeCloseTo() : va vérifier par défaut que la différence entre les deux nombres de types float est inférieure à 0.005
+(précision de 2 chiffres après la virgule par défaut). Il prend optionnellement un deuxième argument permettant de passer la précision
+de la comparaison (donc préciser le nombre de chiffres à vérifier après la virgule).
+*/
+describe.only("Les matchers pour les nombres", () => {
+  const num1 = 0.1;
+  const num2 = 0.2;
+  const num3 = 10;
+  const num4 = 20;
+
+  test("Permet de vérifier les calculs entre nombres flottants", () => {
+    expect(num1 + num2).toBeCloseTo(0.3, 5); // Verification sur 5 chiffres après la virgule
+  });
+  test("num4 est plus grand que num3", () => {
+    expect(num4).toBeGreaterThanOrEqual(num3);
+  });
+});
