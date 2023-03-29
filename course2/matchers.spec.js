@@ -260,3 +260,33 @@ test("Zéro", () => {
   expect(z).not.toBeTruthy();
   expect(z).toBeFalsy();
 });
+
+/*
+**Les matchers pour les erreurs et tester qu’une promesse est resolve ou reject**
+- toThrow() permet de vérifier qu’une fonction renvoie une erreur lorsqu’elle est appelée.
+*/
+describe.only("Les matchers pour les erreurs", () => {
+  function testError() {
+    throw new Error("Erreur pour tester");
+  }
+
+  const promise1 = Promise.resolve("The promise is resolved bro !");
+  const promise2 = Promise.reject(new Error("The promise is rejected bro..."));
+
+  test("Test une erreur", () => {
+    expect(testError).toThrow(Error("Erreur pour tester"));
+  });
+  it("Promise is resolved", () => {
+    expect(promise1).resolves; // Verification uniquement que la promise est resolve sans tester la valeur
+    expect(promise1).resolves.toBe("The promise is resolved bro !"); // Verification que la promise est resolve et return la bonne valeur
+  });
+  it("Promise is resolved with correct value", () => {
+    expect(promise1).resolves.toBe("The promise is resolved bro !"); // Verification que la promise est resolve et return la bonne valeur
+  });
+  it("Promise is rejected", () => {
+    expect(promise2).rejects.toThrow();
+  });
+  it("Promise is rejected with correct value", () => {
+    expect(promise2).rejects.toThrow("The promise is rejected bro...");
+  });
+});

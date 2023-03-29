@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./course2/exercices-matchers.spec.js"
+    "test": "jest ./course2/matchers.spec.js"
   },
   "author": "",
   "license": "ISC",
