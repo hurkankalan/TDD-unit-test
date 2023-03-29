@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./course2/matchers.spec.js"
+    "test": "jest ./course3/expect-helpers.test.js"
   },
   "author": "",
   "license": "ISC",

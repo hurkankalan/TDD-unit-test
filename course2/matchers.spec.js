@@ -265,7 +265,7 @@ test("Zéro", () => {
 **Les matchers pour les erreurs et tester qu’une promesse est resolve ou reject**
 - toThrow() permet de vérifier qu’une fonction renvoie une erreur lorsqu’elle est appelée.
 */
-describe.only("Les matchers pour les erreurs", () => {
+describe("Les matchers pour les erreurs", () => {
   function testError() {
     throw new Error("Erreur pour tester");
   }
