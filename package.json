@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./course3/expect-helpers.test.js"
+    "test": "jest ./course4/asynchrones-functions.test"
   },
   "author": "",
   "license": "ISC",

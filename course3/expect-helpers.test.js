@@ -30,10 +30,6 @@ test("Tester que les valeurs d'un tableau sont incluses dans un tableau", () => 
   expect([1, 2, 3]).toEqual(expect.arrayContaining([2, 3]));
 });
 
-test("Tester que les valeurs d'un tableau sont incluses dans un tableau", () => {
-  expect.arrayContaining([2, 3]);
-});
-
 test("Tester que toutes les valeurs d'un tableau ne sont pas incluses dans un tableau", () => {
   expect([1, 2, 3]).toEqual(expect.not.arrayContaining([4, 2]));
 });
@@ -62,7 +58,7 @@ test("ne contient pas la chaîne spécifiée", () => {
 });
 
 test("ne contient pas la chaîne spécifiée", () => {
-  expect("Un chien c'est cool").toEqual(
+  expect("Un Elephant c'est cool").toEqual(
     expect.stringMatching(/[éÉeE]l[eé]phant/)
   );
 });
