@@ -1,13 +1,37 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+var __awaiter =
+  (this && this.__awaiter) ||
+  function (thisArg, _arguments, P, generator) {
+    function adopt(value) {
+      return value instanceof P
+        ? value
+        : new P(function (resolve) {
+            resolve(value);
+          });
+    }
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      function fulfilled(value) {
+        try {
+          step(generator.next(value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function rejected(value) {
+        try {
+          step(generator["throw"](value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function step(result) {
+        result.done
+          ? resolve(result.value)
+          : adopt(result.value).then(fulfilled, rejected);
+      }
+      step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-};
+  };
 Object.defineProperty(exports, "__esModule", { value: true });
 const asynchrones_functions_1 = require("./asynchrones-functions");
 /*
@@ -24,10 +48,10 @@ PS : A la fin de ce cours tout en bas, il y aura la meilleur facon de le faire a
 */
 // Le test est passed alors qu'il devrait failed :
 it("should be 3", () => {
-    const callback = (res) => {
-        expect(res).toBe(50);
-    };
-    (0, asynchrones_functions_1.add)(1, 2, callback);
+  const callback = (res) => {
+    expect(res).toBe(50);
+  };
+  (0, asynchrones_functions_1.add)(1, 2, callback);
 });
 /*
 Le test est failed comme prévu : 1 + 2 donne comme résultat 3 et non pas 50
@@ -35,11 +59,11 @@ Si on passe le done en argument d'un test, il faut impérativement l'invoquer po
 jusqu'au timeout du test.
 */
 test("should be 3", (done) => {
-    const cb = (res) => {
-        expect(res).toBe(50);
-        done();
-    };
-    (0, asynchrones_functions_1.add)(1, 2, cb);
+  const cb = (res) => {
+    expect(res).toBe(50);
+    done();
+  };
+  (0, asynchrones_functions_1.add)(1, 2, cb);
 });
 /*
 Si on return quelque chose, js va attendre le retour de la promise car elle est return avant de continuer la suite des tests.
@@ -47,13 +71,15 @@ Donc le test ne sera pas finalisé grace au mot clé return. Si pas de return, l
 car elle ne va meme pas attendre la reponse avant de finir le test
 */
 it("should be 2", () => {
-    return (0, asynchrones_functions_1.addition)(1, 1).then((res) => {
-        expect(res).toBe(2);
-    });
+  return (0, asynchrones_functions_1.addition)(1, 1).then((res) => {
+    expect(res).toBe(2);
+  });
 });
 // Le test est passed
 it("should be error", () => {
-    return (0, asynchrones_functions_1.addition2)().catch((error) => expect(error).toBe("error"));
+  return (0, asynchrones_functions_1.addition2)().catch((error) =>
+    expect(error).toBe("error")
+  );
 });
 /*
 Idem que l'exemple précédent mais plutot que de retourner une promise à partir de la fonction, on va directement return l'expect
@@ -62,30 +88,33 @@ de la function asynchrone et utiliser le matcher reject ou resolve dessus.
 par la function add() et on va ensuite pouvoir faire la comparaison de l'error qu'on a indiqué avec celle attendu avec .tobe()
 */
 it("should be error", () => {
-    return expect((0, asynchrones_functions_1.addition2)()).rejects.toBe("error");
+  return expect((0, asynchrones_functions_1.addition2)()).rejects.toBe("error");
 });
 /*
 De la même manière qu'en haut mais en mode resolve
 Si on retourne une promesse, Jest attendra qu'elle soit terminée (settled) pour finir le test, si pas de return elle finira sans avoir tester !!
 */
 it("Shoulde be 100", () => {
-    return expect((0, asynchrones_functions_1.addition)(50, 50)).resolves.toBe(100);
+  return expect((0, asynchrones_functions_1.addition)(50, 50)).resolves.toBe(
+    100
+  );
 });
 /*
 La meilleur façon moderne de tester une promise aved async/await : on peut enlever le return car await va attendre le retour de la promise
 avant de continuer le test
 */
-it("Shoulde be 200", () => __awaiter(void 0, void 0, void 0, function* () {
+it("Shoulde be 200", () =>
+  __awaiter(void 0, void 0, void 0, function* () {
     //   await expect(addition(50, 50)).resolves.toBe(100); Ca fonctionne mais c'est mioeux de stocker dans une variable
     const res = yield (0, asynchrones_functions_1.addition)(100, 100);
     expect(res).toBe(200);
-}));
+  }));
 /*
 Meme cas mais si on veut tester avec des try/catch
 */
-it.only("Should be 24", () => __awaiter(void 0, void 0, void 0, function* () {
+it("Should be 24", () =>
+  __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, asynchrones_functions_1.addition)(12, 12);
-    }
-    catch (error) { }
-}));
+      yield (0, asynchrones_functions_1.addition)(12, 12);
+    } catch (error) {}
+  }));

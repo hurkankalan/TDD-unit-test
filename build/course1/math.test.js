@@ -59,7 +59,7 @@ describe("Add two number", () => {
      * Lors de l'execution des tests, le test ci-dessous sera executé et les autres seront en état "skipped"
      * Il est possible d'avoir plusieurs only dans le meme fichier de test apparemment (j'ai testé dans de fichier voir le dernier test de cette page)
      */
-    it.only("1 + 2 should be 3", () => {
+    it("1 + 2 should be 3", () => {
         expect((0, math_1.add)(firstValue, secondValue)).toBe(finalValue);
     });
     /**

@@ -83,7 +83,7 @@ it("Shoulde be 200", async () => {
 /*
 Meme cas mais si on veut tester avec des try/catch
 */
-it.only("Should be 24", async () => {
+it("Should be 24", async () => {
   try {
     await addition(12, 12);
   } catch (error) {}

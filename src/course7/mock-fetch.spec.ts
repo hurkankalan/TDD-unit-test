@@ -116,7 +116,7 @@ class Users {
   }
 }
 
-test.only("récupérer les utilisateurs", () => {
+test("récupérer les utilisateurs", () => {
   const users = [{ nom: "Jean" }, { nom: "Paul" }];
   const res = { data: users };
   // Nous faisons comme si la méthode get d'axios recevais res.
