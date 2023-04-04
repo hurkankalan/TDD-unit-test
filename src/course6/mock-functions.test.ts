@@ -5,6 +5,8 @@ import { add, forEach } from "./mock-functions";
 Les fonctions mock permettent de tester une fonction sans son implémentation.
 Elles permettent de tester si une fonction a été appelée, combien de fois, avec quels arguments etc.
 Elles sont utilisées pour remplacer une fonction que nous ne pouvons pas contrôler, par une fonction que nous contrôlons.
+--> Les fonctions mock peuvent être utilisées pour remplacer une véritable fonction dans un test
+--> C'est une bonne pratique de remplacer une requête HTTP d'une fonction par un mock pour avoir un test plus rapide.
 
 Pour créer une fonction mock Jest, il suffit de faire : const monMock = jest.fn();
 
