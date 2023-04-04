@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx tsc && node build/index.js",
-    "test": "jest ./course4/asynchrones-functions.test"
+    "test": "jest ./src/course6/mock-functions.test"
   },
   "author": "",
   "license": "ISC",
